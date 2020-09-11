@@ -5,20 +5,16 @@ import{
 } from "react-native";
 import { Cabecalho } from './src/Componentes/cabecalho';
 import { Foto } from './src/Componentes/Foto';
+import {Comentarios} from './src/Componentes/Comentarios';
+import lerFotos from './src/api/feed';
 
 const App = () => {
   const [fotos, setFotos] = useState([]);
   
   useEffect(() => {
-    const lerFotos = async() => {
-      const fotosHTTP = await fetch("http://10.1.0.2:3030/feed");
-      const fotosJson = await fotosHTTP.json();
-      setFotos(fotosJson);
-    }
-
-    lerFotos();
+    lerFotos(setFotos);
   },[])
-
+  
   return (
     <ScrollView>
      <FlatList
@@ -26,8 +22,15 @@ const App = () => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item })=>
           <Fragment>
-            <Cabecalho nomeUsuario={item.userName}/>
-            <Foto />
+            <Cabecalho nomeUsuario={item.userName}
+            urlImage={item.userURL}
+            />
+            <Foto 
+            urlFoto={item.url}
+            descricao={item.description}
+            qntLikes={item.likes}
+            />
+            <Comentarios comentarios={item.comentarios}/>
           </Fragment>} 
           />
     </ScrollView>
