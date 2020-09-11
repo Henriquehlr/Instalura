@@ -13,10 +13,7 @@ import estilo from './estilo';
 const Comentarios = ( {comentarios} ) => {
     const [estComentarios, setComentarios] = useState(comentarios);
 
-
-
     const adicionarComentario = () => {
-        console.warn(conteudoCampoInput);
         campoInput.clear();
         const novoComentario = {
             data: Date.now(),
