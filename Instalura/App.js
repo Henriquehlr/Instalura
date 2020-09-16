@@ -1,12 +1,12 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Feed from "./src/Views/Feed/Feed"
-import Login from "./src/Views/Login/login"
+import Login from "./src/Views/Login/Login"
+
 
 const App = () => {
- 
+  
   return (
-      <Login/>
+    <Login/>
   )
 };
-
 export default App;
